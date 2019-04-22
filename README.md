@@ -103,7 +103,8 @@ loop.run_until_complete(coroutine)
 ## Details
 - Clients will attempt to auto-reconnect until told to stop.
 - Method names have to follow python function name limitations.
-- The reconnection protocol reserves the `hello` and `alert` methods.
+- The reconnection protocol reserves the `hello` `alert` methods.
+- Implementation reserves the `bind` `wait` `start` `stop` methods.
 - Annotations are not considered; schema checking should be done manually.
 - Keyword arguments cannot be passed in a positional manner and vice versa.
 - WebSockets should not be used outside of Agent context while connected.

@@ -96,9 +96,9 @@ class AgentMeta(type):
 
                 continue
 
-            details.update(base.details)
+            details.update(base._details)
 
-        for value in namespace.values():
+        for (key, value) in namespace.items():
 
             try:
 
@@ -108,6 +108,10 @@ class AgentMeta(type):
 
                 continue
 
+            if key.startswith('_'):
+
+                raise ValueError('Methods cannot start with _')
+
             spec = helpers.spec(value)
 
             details[value] = spec
@@ -116,7 +120,7 @@ class AgentMeta(type):
 
         self = super().__new__(cls, name, bases, namespace)
 
-        self.details = details
+        self._details = details
 
         return self
 
@@ -157,7 +161,7 @@ class Agent(metaclass = AgentMeta):
 
             function = method.__func__
 
-            spec = self.details[function]
+            spec = self._details[function]
 
         except (AttributeError, KeyError):
 
