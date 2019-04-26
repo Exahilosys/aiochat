@@ -127,7 +127,7 @@ class AgentMeta(type):
 
 class Agent(metaclass = AgentMeta):
 
-    __slots__ = ('_channel', '_methods')
+    __slots__ = ('_channel',)
 
     def bind(self, channel):
 

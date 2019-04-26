@@ -6,9 +6,7 @@ with open('README.md') as file:
 
 name = 'aiochat'
 
-module = __import__(name)
-
-version = module.__version__
+version = '0.0.2'
 
 author = 'Exahilosys'
 
